@@ -248,12 +248,17 @@ Functions
 •	Improves system security
 
 
+<img width="813" height="490" alt="image" src="https://github.com/user-attachments/assets/cabb40fa-4f7c-46ac-9214-0aa54861d028" />
 
+<img width="812" height="482" alt="image" src="https://github.com/user-attachments/assets/da3f25a3-d4fd-4ba7-ba10-630e5f9e5a87" />
 
+<img width="816" height="495" alt="image" src="https://github.com/user-attachments/assets/8f770531-df95-40c4-b5d4-17a5099bd830" />
 
+<img width="811" height="482" alt="image" src="https://github.com/user-attachments/assets/e0e37e46-be05-4bd7-88ef-b064aeb3b911" />
 
+<img width="816" height="488" alt="image" src="https://github.com/user-attachments/assets/b7b05494-db88-48e4-b229-4d727d261d1d" />
 
-
+<img width="816" height="480" alt="image" src="https://github.com/user-attachments/assets/a81a525d-c8ab-4b30-bab4-afa986dc79be" />
 
 
 
