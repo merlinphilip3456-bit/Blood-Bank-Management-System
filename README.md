@@ -106,6 +106,7 @@ The graphical interface makes the system easy to use even for non
 technical staff. 
 
 SOFTWARE MODULES
+
 The Blood Bank Management System is divided into multiple modules, all accessed through a MenuStrip-based Dashboard. Each menu item represents a specific functional module of the system. This modular design improves usability, maintainability, and scalability of the system.
 
 1. Login Module
