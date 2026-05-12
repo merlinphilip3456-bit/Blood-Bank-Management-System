@@ -270,7 +270,7 @@ Functions
 
 <img width="812" height="492" alt="Screenshot 2026-03-16 195943" src="https://github.com/user-attachments/assets/462541ac-13f9-45cd-a7c1-fb8ef734ed6f" />
 
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/9cb25788-7dfa-4cbb-a5d7-521cc8dbbad2" />
+
 
 
 
