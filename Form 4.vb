@@ -1,0 +1,92 @@
+Imports Microsoft.Data.SqlClient
+Imports Windows.Win32.System
+
+Public Class Form4
+    Dim query As String = "SELECT Status, AdminMessage FROM Donor_Requests WHERE Contact=@contact"
+    Dim con As New SqlConnection("Data Source=localhost;Initial Catalog=bloba;Integrated Security=True;Encrypt=True;Trust Server Certificate=True")
+
+    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
+
+        Try
+            ' 🔹 EXISTING CODE (keep this)
+            Dim da As New SqlDataAdapter("SELECT * FROM Donor", con)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            DataGridView1.DataSource = dt
+
+            ' 🔥 NEW CODE (get latest request status)
+            Dim query As String = "SELECT TOP 1 Status, AdminMessage 
+                              FROM Donor_Requests 
+                              WHERE Contact=@contact 
+                              ORDER BY RequestDate DESC"
+
+            Using cmd As New SqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@contact", txtContact.Text)
+
+                If con.State = ConnectionState.Closed Then
+                    con.Open()
+                End If
+
+                Using reader As SqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        MessageBox.Show("Status: " & reader("Status").ToString() & vbCrLf &
+                                    "Message: " & reader("AdminMessage").ToString())
+                    Else
+                        MessageBox.Show("No request found")
+                    End If
+                End Using
+
+                con.Close()
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+
+
+
+    End Sub
+
+    Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cmbGender.Items.Add("Male")
+        cmbGender.Items.Add("Female")
+
+        cmbBloodGroup.Items.AddRange({"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"})
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+
+        Dim cs As String = "Data Source=localhost;Initial Catalog=bloba;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"
+
+        Try
+            Using con As New SqlConnection(cs)
+
+                Dim query As String = "INSERT INTO Donor_Requests 
+                (DonorName, Age, Gender, BloodGroup, Contact, Address)
+                VALUES (@name, @age, @gender, @bg, @contact, @address)"
+
+                Using cmd As New SqlCommand(query, con)
+
+                    cmd.Parameters.AddWithValue("@name", txtName.Text)
+                    cmd.Parameters.AddWithValue("@age", txtAge.Text)
+                    cmd.Parameters.AddWithValue("@gender", cmbGender.Text)
+                    cmd.Parameters.AddWithValue("@bg", cmbBloodGroup.Text)
+                    cmd.Parameters.AddWithValue("@contact", txtContact.Text)
+                    cmd.Parameters.AddWithValue("@address", txtAddress.Text)
+
+                    con.Open()
+                    cmd.ExecuteNonQuery()
+
+                    MessageBox.Show("Request sent to Admin successfully!")
+
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        End Try
+
+    End Sub
+
+End Class
