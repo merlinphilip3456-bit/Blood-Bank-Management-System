@@ -1,3 +1,8 @@
+<img width="815" height="491" alt="Screenshot 2026-03-16 200801" src="https://github.com/user-attachments/assets/9f45f5c2-5320-4e1d-8b3b-8f6764ea625f" />
+<img width="813" height="487" alt="Screenshot 2026-03-16 200012" src="https://github.com/user-attachments/assets/0f8010ff-6710-47c9-9b3c-2429349f1bd9" />
+<img width="812" height="492" alt="Screenshot 2026-03-16 195943" src="https://github.com/user-attachments/assets/462541ac-13f9-45cd-a7c1-fb8ef734ed6f" />
+<img width="860" height="493" alt="Screenshot 2026-03-16 195916" src="https://github.com/user-attachments/assets/f3b364fe-65dc-41b0-b6ae-14dd2669db5d" />
+<img width="813" height="487" alt="Screenshot 2026-03-16 201021" src="https://github.com/user-attachments/assets/94f262f5-d63f-468b-afa6-5b76684f5b62" />
 # Blood-Bank-Management-System
 
 The Blood Bank Management System is a software application developed using VB.NET for the frontend and SQL Server for the backend. The main objective of this project is to store and manage blood donor details in an easy and organized way.
