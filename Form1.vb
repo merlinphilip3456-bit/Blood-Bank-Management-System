@@ -1,4 +1,4 @@
-﻿Imports Microsoft.Data.SqlClient
+Imports Microsoft.Data.SqlClient
 
 Public Class Form1
 
@@ -9,15 +9,15 @@ Public Class Form1
 
         If username = "" OrElse password = "" Then
             MessageBox.Show("Enter username and password", "Validation",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
         Dim cs As String =
-            "Data Source=localhost;Initial Catalog=bloba;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"
+        "Data Source=localhost;Initial Catalog=bloba;Integrated Security=True;Encrypt=True;Trust Server Certificate=True"
 
         Dim query As String =
-            "SELECT COUNT(*) FROM Login_Users WHERE Username=@username AND Password=@password"
+        "SELECT Role FROM Login_Users WHERE Username=@username AND Password=@password"
 
         Try
             Using con As New SqlConnection(cs)
@@ -27,21 +27,32 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@password", password)
 
                     con.Open()
-                    Dim result As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
-                    If result > 0 Then
+                    Dim role As Object = cmd.ExecuteScalar()
+
+                    If role IsNot Nothing Then
+
                         MessageBox.Show("Login Successful", "Success",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information)
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                        Dim d As New Dashboard()
-                        d.Show()
+                        ' 🔹 Open dashboard based on role
+                        If role.ToString().Trim().ToLower() = "admin" Then
+                            Dim adminDash As New AdminDashboard()
+                            adminDash.Show()
+                        Else
+                            Dim userDash As New UserDashBoard()
+                            userDash.Show()
+                        End If
+
                         Me.Hide()
+
                     Else
                         MessageBox.Show("Invalid Username or Password", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error)
                         TextBox2.Clear()
                         TextBox1.Focus()
                     End If
+
                 End Using
             End Using
 
